@@ -9,8 +9,8 @@ TRAP_BAD_REQUEST_ERRORS = True
 ## >>> os.urandom(24)
 SECRET_KEY = ''
 
-# OAuth2 Authentication Server
-## EXAMPLE: Github Authentication Server endpoints
+# OAuth2 Authorization Server
+## EXAMPLE: Github Authorization Server endpoints
 #AS_AUTH_URL = 'https://github.com/login/oauth/authorize'
 #AS_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 
