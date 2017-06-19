@@ -29,9 +29,10 @@
     <tbody>
       <tr><td>grant_type</td><td>authorization_code</td></tr>
       <tr><td>code</td><td>{{ code }}</td></tr>
+      <tr><td>state</td><td>{{ state }}</td></tr>
       <tr><td>client_id</td><td>{{ client_id }}</td></tr>
       <tr><td>client_secret</td><td>{{ client_secret }}</td></tr>
-      <tr><td>state</td><td>{{ state }}</td></tr>
+      <tr><td>redirect_uri</td><td>{{ redirect_uri }}</td></tr>
     </tbody>
   </table>
   <h3>Full Token request</h3>
@@ -39,10 +40,11 @@
     POST {{ as_token_url }}
 
     grant_type=authorization_code
-    &code={{code}}
-    &client_id={{client_id}}
-    &client_secret={{client_secret}}
-    &redirect_uri={{redirect_uri}}
+    code={{code}}
+    state={{state}}
+    client_id={{client_id}}
+    client_secret={{client_secret}}
+    redirect_uri={{redirect_uri}}
   </pre>
 
   <div class="panel-body text-center">

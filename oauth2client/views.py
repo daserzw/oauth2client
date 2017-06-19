@@ -11,7 +11,7 @@ def index():
     scope = app.config['SCOPE']
     as_auth_url = app.config['AS_AUTH_URL']
 
-    full_as_auth_url = '%s\n?response_type=code\n&client_id=%s\n&redirect_uri=%s\n&state=%s\n&scope=%s' % (
+    full_as_auth_url_print = '%s\n?response_type=code\n&client_id=%s\n&redirect_uri=%s\n&state=%s\n&scope=%s' % (
         as_auth_url,
         client_id,
         urllib.quote_plus(redirect_uri),
@@ -19,6 +19,14 @@ def index():
         scope
     )
 
+    full_as_auth_url = '%s?response_type=code&client_id=%s&redirect_uri=%s&state=%s&scope=%s' % (
+        as_auth_url,
+        client_id,
+        urllib.quote_plus(redirect_uri),
+        state,
+        scope
+    )
+    
     return render_template(
         'index.html',
         client_id=client_id,
@@ -43,15 +51,6 @@ def cb():
     client_secret = app.config['CLIENT_SECRET']
     redirect_uri = app.config['REDIRECT_URI']
     as_token_url = app.config['AS_TOKEN_URL']
-
-    full_as_token_url = '%s?grant_type=authorization_code&code=%sclient_id=%s&client_secret=%s,redirect_uri=%s&state=%s' % (
-        as_token_url,
-        code,
-        client_id,
-        client_secret,
-        urllib.quote_plus(redirect_uri),
-        state
-    )
 
     return render_template(
         'cb.html',
@@ -108,7 +107,7 @@ def resource():
     rs_api_url = app.config['RS_API_URL']
     access_token = session['access_token']
     
-    headers = {'Authorization': 'token '+access_token}
+    headers = {'Authorization': 'Bearer '+access_token}
     
     r = requests.get(rs_api_url+'user', headers=headers)
 
