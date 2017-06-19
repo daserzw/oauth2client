@@ -1,4 +1,4 @@
-import random, hashlib, urllib, requests
+import random, hashlib, urllib, requests, json
 from oauth2client import app
 from flask import render_template, url_for, redirect, session, request, Response
 
@@ -32,6 +32,7 @@ def index():
 
 @app.route('/cb')
 def cb():
+    req_environ = pprint.pformat(request.environ, depht5)
     code = request.args.get('code')
     session['code'] = code
     state = request.args.get('state')
@@ -49,7 +50,8 @@ def cb():
         client_id,
         client_secret,
         urllib.quote_plus(redirect_uri),
-        state
+        state,
+        req_environ
     )
 
     return render_template(

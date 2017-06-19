@@ -3,7 +3,7 @@ DEBUG = True
 TRAP_BAD_REQUEST_ERRORS = True
 
 # SECRET_KEY
-## Insert here your secret key
+## Insert your secret key
 ## To generate a secret key in a python shell:
 ## >>> import os
 ## >>> os.urandom(24)
