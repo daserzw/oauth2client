@@ -11,7 +11,7 @@ def index():
     scope = app.config['SCOPE']
     as_auth_url = app.config['AS_AUTH_URL']
 
-    full_as_auth_url = '%s?\nresponse_type=code\n&client_id=%s&redirect_uri=%s\n&state=%s\n&scope=%s' % (
+    full_as_auth_url = '%s\n?response_type=code\n&client_id=%s\n&redirect_uri=%s\n&state=%s\n&scope=%s' % (
         as_auth_url,
         client_id,
         urllib.quote_plus(redirect_uri),
