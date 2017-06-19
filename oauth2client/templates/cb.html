@@ -5,13 +5,24 @@
   </div>
   <h2>Authorization Response</h2>
   <pre>
-    {{ req_environ }}
+    {{ req }}
   </pre>
+  <h3>Authorization Response unpacked</h3>
+  <h3>Parameters</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr><th>Parameter</th><th>Current Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>code</td><td>{{ code }}</td></tr>
+      <tr><td>state</td><td>{{ state }}</td></tr>
+    </tbody>
+  </table>
   <h2>Access Token Request</h2>
   <h3>Authorization Server</h3>
-  <p>Token endpoint: {{ as_tokent_url }}</p>
+  <p>Token endpoint: {{ as_token_url }}</p>
   <h3>Parameters</h3>
-  <table class="table-bordered table-striped">
+  <table class="table table-bordered table-striped">
     <thead>
       <tr><th>Parameter</th><th>Current Value</th></tr>
     </thead>

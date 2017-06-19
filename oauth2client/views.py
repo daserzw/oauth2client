@@ -32,7 +32,7 @@ def index():
 
 @app.route('/cb')
 def cb():
-    req_environ = pprint.pformat(request.environ, depht5)
+    req = pprint.pformat(request.environ, depth=5)
     code = request.args.get('code')
     session['code'] = code
     state = request.args.get('state')
@@ -50,8 +50,7 @@ def cb():
         client_id,
         client_secret,
         urllib.quote_plus(redirect_uri),
-        state,
-        req_environ
+        state
     )
 
     return render_template(
@@ -61,7 +60,8 @@ def cb():
         client_id = client_id,
         client_secret = client_secret,
         redirect_uri=redirect_uri,
-        as_token_url=as_token_url
+        as_token_url=as_token_url,
+        req=req
     )
 
 @app.route('/access_token')
